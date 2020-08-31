@@ -53,7 +53,7 @@ buildDemo:
 
 
 doc:
-	@swag init -d internal/app/handler/user -g login.go
+	@swag init -d internal/app/handler -g user/swag.go
 run:
 	go run cmd/main.go --config=config/config.toml
 

@@ -10,6 +10,7 @@ require (
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-openapi/spec v0.19.9 // indirect
 	github.com/go-openapi/swag v0.19.9 // indirect
+	github.com/gofrs/uuid v3.3.0+incompatible
 	github.com/labstack/echo/v4 v4.1.16
 	github.com/lexkong/log v0.0.0-20180607165131-972f9cd951fc
 	github.com/mailru/easyjson v0.7.6 // indirect
@@ -20,6 +21,7 @@ require (
 	github.com/swaggo/gin-swagger v1.2.0
 	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf
 	github.com/urfave/cli/v2 v2.2.0 // indirect
+	github.com/willf/pad v0.0.0-20200313202418-172aa767f2a4
 	golang.org/x/crypto v0.0.0-20200728195943-123391ffb6de
 	golang.org/x/net v0.0.0-20200822124328-c89045814202 // indirect
 	golang.org/x/sys v0.0.0-20200828194041-157a740278f4 // indirect

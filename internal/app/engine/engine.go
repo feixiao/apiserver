@@ -3,6 +3,8 @@ package engine
 import (
 	"apiserver/internal/app/grpc/greeter"
 	"apiserver/internal/app/handler/sd"
+
+	"apiserver/internal/app/handler/middleware"
 	"apiserver/internal/app/handler/user"
 	"net/http"
 	"time"
@@ -42,11 +44,12 @@ func (eng *Engine) serveHTTP() error {
 
 	g := server
 	// Middlewares.
-	// g.Use(gin.Recovery())
-	// g.Use(middleware.NoCache)
-	// g.Use(middleware.Options)
-	// g.Use(middleware.Secure)
-	// g.Use(mw...)
+	g.Use(gin.Recovery())
+	g.Use(middleware.NoCache)
+	g.Use(middleware.Options)
+	g.Use(middleware.Secure)
+	g.Use(middleware.Logging(),
+		middleware.RequestId())
 	// 404 Handler.
 	g.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API route.")
