@@ -18,7 +18,7 @@ import (
 // @Accept  json
 // @Produce  json
 // @Param id path uint64 true "The user's database id index num"
-// @Param user body db.rModel true "The user info"
+// @Param user body db.UserModel true "The user info"
 // @Success 200 {object} handler.Response "{"code":0,"message":"OK","data":null}"
 // @Router /user/{id} [put]
 func Update(c *gin.Context) {
