@@ -2,7 +2,7 @@ package user
 
 import (
 	h "apiserver/internal/app/handler"
-	model "apiserver/internal/app/model/db"
+	"apiserver/internal/app/model/db"
 	"apiserver/pkg/errno"
 	"apiserver/pkg/util"
 
@@ -27,7 +27,7 @@ func Create(c *gin.Context) {
 		return
 	}
 
-	u := model.UserModel{
+	u := db.UserModel{
 		Username: r.Username,
 		Password: r.Password,
 	}

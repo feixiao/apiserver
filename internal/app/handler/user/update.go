@@ -2,7 +2,7 @@ package user
 
 import (
 	h "apiserver/internal/app/handler"
-	model "apiserver/internal/app/model/db"
+	"apiserver/internal/app/model/db"
 	"apiserver/pkg/errno"
 	"apiserver/pkg/util"
 	"strconv"
@@ -18,7 +18,7 @@ import (
 // @Accept  json
 // @Produce  json
 // @Param id path uint64 true "The user's database id index num"
-// @Param user body model.UserModel true "The user info"
+// @Param user body db.rModel true "The user info"
 // @Success 200 {object} handler.Response "{"code":0,"message":"OK","data":null}"
 // @Router /user/{id} [put]
 func Update(c *gin.Context) {
@@ -27,7 +27,7 @@ func Update(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
 
 	// Binding the user data.
-	var u model.UserModel
+	var u db.UserModel
 	if err := c.Bind(&u); err != nil {
 		h.SendResponse(c, errno.ErrBind, nil)
 		return

@@ -2,7 +2,7 @@ package user
 
 import (
 	h "apiserver/internal/app/handler"
-	model "apiserver/internal/app/model/db"
+	"apiserver/internal/app/model/db"
 	"apiserver/pkg/auth"
 	"apiserver/pkg/errno"
 	"apiserver/pkg/token"
@@ -18,14 +18,14 @@ import (
 // @Router /login [post]
 func Login(c *gin.Context) {
 	// Binding the data with the user struct.
-	var u model.UserModel
+	var u db.UserModel
 	if err := c.Bind(&u); err != nil {
 		h.SendResponse(c, errno.ErrBind, nil)
 		return
 	}
 
 	// Get the user information by the login username.
-	d, err := model.GetUser(u.Username)
+	d, err := db.GetUser(u.Username)
 	if err != nil {
 		h.SendResponse(c, errno.ErrUserNotFound, nil)
 		return
@@ -44,5 +44,5 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	h.SendResponse(c, nil, model.Token{Token: t})
+	h.SendResponse(c, nil, db.Token{Token: t})
 }

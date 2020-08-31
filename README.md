@@ -15,3 +15,4 @@ jupiter new apiserver
 + [apiserver_demos](https://github.com/feixiao/apiserver_demos)
 
 ### 参考文章
++ [《Go API 开发实战》](https://cloud.tencent.com/developer/article/1427578) 基于Gin版本APIServer, 含有详细实现过程。

@@ -13,7 +13,6 @@ import (
 	"github.com/douyu/jupiter/pkg/util/xgo"
 	"github.com/douyu/jupiter/pkg/worker/xcron"
 	"github.com/douyu/jupiter/pkg/xlog"
-	"github.com/feixiao/pprof"
 	"github.com/gin-gonic/gin"
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
@@ -55,9 +54,6 @@ func (eng *Engine) serveHTTP() error {
 
 	// swagger api docs
 	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-
-	// pprof router
-	pprof.Register(g)
 
 	// api for authentication functionalities
 	g.POST("/login", user.Login)

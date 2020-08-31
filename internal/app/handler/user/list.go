@@ -2,7 +2,7 @@ package user
 
 import (
 	h "apiserver/internal/app/handler"
-	model "apiserver/internal/app/model/db"
+	"apiserver/internal/app/model/db"
 	"apiserver/pkg/errno"
 	"apiserver/pkg/util"
 	"fmt"
@@ -40,9 +40,9 @@ func List(c *gin.Context) {
 	})
 }
 
-func ListUser(username string, offset, limit int) ([]*model.UserInfo, uint64, error) {
-	infos := make([]*model.UserInfo, 0)
-	users, count, err := model.ListUser(username, offset, limit)
+func ListUser(username string, offset, limit int) ([]*db.UserInfo, uint64, error) {
+	infos := make([]*db.UserInfo, 0)
+	users, count, err := db.ListUser(username, offset, limit)
 	if err != nil {
 		return nil, count, err
 	}
@@ -53,9 +53,9 @@ func ListUser(username string, offset, limit int) ([]*model.UserInfo, uint64, er
 	}
 
 	wg := sync.WaitGroup{}
-	userList := model.UserList{
+	userList := db.UserList{
 		Lock:  new(sync.Mutex),
-		IdMap: make(map[uint64]*model.UserInfo, len(users)),
+		IdMap: make(map[uint64]*db.UserInfo, len(users)),
 	}
 
 	errChan := make(chan error, 1)
@@ -64,7 +64,7 @@ func ListUser(username string, offset, limit int) ([]*model.UserInfo, uint64, er
 	// Improve query efficiency in parallel
 	for _, u := range users {
 		wg.Add(1)
-		go func(u *model.UserModel) {
+		go func(u *db.UserModel) {
 			defer wg.Done()
 
 			shortId, err := util.GenShortId()
@@ -75,7 +75,7 @@ func ListUser(username string, offset, limit int) ([]*model.UserInfo, uint64, er
 
 			userList.Lock.Lock()
 			defer userList.Lock.Unlock()
-			userList.IdMap[u.Id] = &model.UserInfo{
+			userList.IdMap[u.Id] = &db.UserInfo{
 				Id:        u.Id,
 				Username:  u.Username,
 				SayHello:  fmt.Sprintf("Hello %s", shortId),

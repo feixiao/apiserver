@@ -1,8 +1,6 @@
 package user
 
-import (
-	model "apiserver/internal/app/model/db"
-)
+import "apiserver/internal/app/model/db"
 
 type CreateRequest struct {
 	Username string `json:"username"`
@@ -20,11 +18,11 @@ type ListRequest struct {
 }
 
 type ListResponse struct {
-	TotalCount uint64            `json:"totalCount"`
-	UserList   []*model.UserInfo `json:"userList"`
+	TotalCount uint64         `json:"totalCount"`
+	UserList   []*db.UserInfo `json:"userList"`
 }
 
 type SwaggerListResponse struct {
-	TotalCount uint64           `json:"totalCount"`
-	UserList   []model.UserInfo `json:"userList"`
+	TotalCount uint64        `json:"totalCount"`
+	UserList   []db.UserInfo `json:"userList"`
 }

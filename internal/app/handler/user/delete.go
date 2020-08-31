@@ -4,7 +4,7 @@ import (
 	"strconv"
 
 	h "apiserver/internal/app/handler"
-	model "apiserver/internal/app/model/db"
+	"apiserver/internal/app/model/db"
 	"apiserver/pkg/errno"
 
 	"github.com/gin-gonic/gin"
@@ -20,7 +20,7 @@ import (
 // @Router /user/{id} [delete]
 func Delete(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteUser(uint64(userId)); err != nil {
+	if err := db.DeleteUser(uint64(userId)); err != nil {
 		h.SendResponse(c, errno.ErrDatabase, nil)
 		return
 	}

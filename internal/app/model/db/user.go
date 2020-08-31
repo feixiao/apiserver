@@ -1,11 +1,10 @@
 package db
 
 import (
-	"fmt"
-
 	"apiserver/internal/app/model"
 	"apiserver/pkg/auth"
 	"apiserver/pkg/constvar"
+	"fmt"
 
 	validator "gopkg.in/go-playground/validator.v9"
 )

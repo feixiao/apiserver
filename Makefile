@@ -51,6 +51,9 @@ buildDemo:
 	$(BUILD_PATH)/script/shell/build.sh $(TITLE) $(JUPITER)/pkg $(BASE_PATH)/cmd/main.go
 	@echo -e "\n"
 
+
+doc:
+	@swag init -d internal/app/handler/user -g login.go
 run:
 	go run cmd/main.go --config=config/config.toml
 
