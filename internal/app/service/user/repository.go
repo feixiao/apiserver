@@ -5,5 +5,5 @@ import (
 )
 
 type Repository interface {
-	Get(id int) (user db.User,err error)
+	Get(id int) (user db.User, err error)
 }

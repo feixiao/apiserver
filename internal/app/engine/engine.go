@@ -1,17 +1,23 @@
 package engine
 
 import (
-	"github.com/douyu/jupiter"
 	"apiserver/internal/app/grpc/greeter"
-	"apiserver/internal/app/handler"
-	"github.com/douyu/jupiter/pkg/server/xecho"
-	"github.com/douyu/jupiter/pkg/worker/xcron"
+	"apiserver/internal/app/handler/sd"
+	"apiserver/internal/app/handler/user"
+	"net/http"
+	"time"
+
+	"github.com/douyu/jupiter"
+	"github.com/douyu/jupiter/pkg/server/xgin"
 	"github.com/douyu/jupiter/pkg/server/xgrpc"
 	"github.com/douyu/jupiter/pkg/util/xgo"
+	"github.com/douyu/jupiter/pkg/worker/xcron"
 	"github.com/douyu/jupiter/pkg/xlog"
-	"github.com/labstack/echo/v4"
+	"github.com/feixiao/pprof"
+	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"google.golang.org/grpc/examples/helloworld/helloworld"
-	"time"
 )
 
 type Engine struct {
@@ -21,38 +27,79 @@ type Engine struct {
 func NewEngine() *Engine {
 	eng := &Engine{}
 	if err := eng.Startup(
-    	xgo.ParallelWithError(
-    			eng.serveGRPC,
-    			eng.serveHTTP,
-    			eng.startJobs,
-    	),
-    ); err != nil {
-    	xlog.Panic("startup engine", xlog.Any("err", err))
-    }
+		xgo.ParallelWithError(
+			eng.serveGRPC,
+			eng.serveHTTP,
+			eng.startJobs,
+		),
+	); err != nil {
+		xlog.Panic("startup engine", xlog.Any("err", err))
+	}
 	return eng
 }
 
 func (eng *Engine) serveHTTP() error {
-	server := xecho.StdConfig("http").Build()
-	server.GET("/jupiter", func(ctx echo.Context) error {
-    	return ctx.JSON(200, "welcome to jupiter")
-    })
-	// Specify routing group
-	group := server.Group("/api")
-	group.GET("/user/:id",handler.GetUser)
+	server := xgin.StdConfig("http").WithLogger(xlog.DefaultLogger).Build()
 
-	//support proxy for http to grpc controller
-	g := greeter.Greeter{}
-	group2 := server.Group("/grpc")
-	group2.GET("/get", xecho.GRPCProxyWrapper(g.SayHello))
-	group2.POST("/post", xecho.GRPCProxyWrapper(g.SayHello))
+	g := server
+	// Middlewares.
+	// g.Use(gin.Recovery())
+	// g.Use(middleware.NoCache)
+	// g.Use(middleware.Options)
+	// g.Use(middleware.Secure)
+	// g.Use(mw...)
+	// 404 Handler.
+	g.NoRoute(func(c *gin.Context) {
+		c.String(http.StatusNotFound, "The incorrect API route.")
+	})
+
+	// swagger api docs
+	g.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+	// pprof router
+	pprof.Register(g)
+
+	// api for authentication functionalities
+	g.POST("/login", user.Login)
+
+	// The user handlers, requiring authentication
+	u := g.Group("/v1/user")
+	//u.Use(middleware.AuthMiddleware())
+	{
+		u.POST("", user.Create)
+		u.DELETE("/:id", user.Delete)
+		u.PUT("/:id", user.Update)
+		u.GET("", user.List)
+		u.GET("/:username", user.Get)
+	}
+
+	// The health check handlers
+	svcd := g.Group("/sd")
+	{
+		svcd.GET("/health", sd.HealthCheck)
+		svcd.GET("/disk", sd.DiskCheck)
+		svcd.GET("/cpu", sd.CPUCheck)
+		svcd.GET("/ram", sd.RAMCheck)
+	}
+	// server.GET("/jupiter", func(ctx echo.Context) error {
+	// 	return ctx.JSON(200, "welcome to jupiter")
+	// })
+	// // Specify routing group
+	// group := server.Group("/api")
+	// group.GET("/user/:id", handler.GetUser)
+
+	// //support proxy for http to grpc controller
+	// g := greeter.Greeter{}
+	// group2 := server.Group("/grpc")
+	// group2.GET("/get", xecho.GRPCProxyWrapper(g.SayHello))
+	// group2.POST("/post", xecho.GRPCProxyWrapper(g.SayHello))
 	return eng.Serve(server)
 }
 
 func (eng *Engine) serveGRPC() error {
 	server := xgrpc.StdConfig("grpc").Build()
-    helloworld.RegisterGreeterServer(server.Server, new(greeter.Greeter))
-    return eng.Serve(server)
+	helloworld.RegisterGreeterServer(server.Server, new(greeter.Greeter))
+	return eng.Serve(server)
 }
 
 func (eng *Engine) startJobs() error {
