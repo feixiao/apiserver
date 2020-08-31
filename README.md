@@ -18,7 +18,7 @@ jupiter new apiserver
 
 ### 测试脚本
 ```shell
-
+wrktest.sh
 ```
 
 ### Todo
