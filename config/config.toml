@@ -1,5 +1,5 @@
 [jupiter.server.http]
-    port = 20105
+    port = 8080
 [jupiter.server.grpc]
     port = 20102
 
