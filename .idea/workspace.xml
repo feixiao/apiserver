@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c4a88819-81d3-411d-b4e9-a2fc2607ba68" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wrktest.sh" beforeDir="false" afterPath="$PROJECT_DIR$/wrktest.sh" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1gtgV46b60xIpCZPLrdgkvJnA41" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GO_FMT" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager" selected="Go Build.apiserver_with_juno_agent">
+    <configuration name="apiserver_with_config" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="apiserver" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <parameters value="--config=config/config.toml" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="apiserver" />
+      <directory value="$PROJECT_DIR$/cmd" />
+      <output_directory value="$PROJECT_DIR$/cmd" />
+      <method v="2" />
+    </configuration>
+    <configuration name="apiserver_with_juno_agent" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="apiserver" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <parameters value="--config=&quot;http://172.20.99.13:60813/api/v1/agent/config?name=apiserver&amp;env=dev&amp;target=config-dev.toml&amp;port=8023&quot; --watch" />
+      <kind value="DIRECTORY" />
+      <filePath value="$PROJECT_DIR$/cmd" />
+      <package value="apiserver" />
+      <directory value="$PROJECT_DIR$/cmd" />
+      <output_directory value="$PROJECT_DIR$/cmd" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.apiserver_with_config" />
+      <item itemvalue="Go Build.apiserver_with_juno_agent" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加默认的项目结构" />
+    <MESSAGE value="修改依赖" />
+    <MESSAGE value="测试cron" />
+    <option name="LAST_COMMIT_MESSAGE" value="测试cron" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="218" y="123" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598951324528">
+      <screen x="68" y="23" width="1372" height="877" />
+    </state>
+    <state x="218" y="123" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog/68.23.1372.877@68.23.1372.877" timestamp="1598951324528" />
+    <state x="349" y="47" key="CommitChangelistDialog2" timestamp="1598949130002">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1598944608155" />
+    <state x="349" y="47" key="CommitChangelistDialog2/65.23.1375.877@65.23.1375.877" timestamp="1598949130002" />
+    <state x="351" y="47" key="CommitChangelistDialog2/68.23.1372.877@68.23.1372.877" timestamp="1598948505137" />
+    <state width="1330" height="231" key="GridCell.Tab.0.bottom" timestamp="1598951240449">
+      <screen x="68" y="23" width="1372" height="877" />
+    </state>
+    <state width="1330" height="231" key="GridCell.Tab.0.bottom/68.23.1372.877@68.23.1372.877" timestamp="1598951240449" />
+    <state width="1330" height="231" key="GridCell.Tab.0.center" timestamp="1598951240448">
+      <screen x="68" y="23" width="1372" height="877" />
+    </state>
+    <state width="1330" height="231" key="GridCell.Tab.0.center/68.23.1372.877@68.23.1372.877" timestamp="1598951240448" />
+    <state width="1330" height="231" key="GridCell.Tab.0.left" timestamp="1598951240447">
+      <screen x="68" y="23" width="1372" height="877" />
+    </state>
+    <state width="1330" height="231" key="GridCell.Tab.0.left/68.23.1372.877@68.23.1372.877" timestamp="1598951240447" />
+    <state width="1330" height="231" key="GridCell.Tab.0.right" timestamp="1598951240448">
+      <screen x="68" y="23" width="1372" height="877" />
+    </state>
+    <state width="1330" height="231" key="GridCell.Tab.0.right/68.23.1372.877@68.23.1372.877" timestamp="1598951240448" />
+    <state x="354" y="201" key="Vcs.Push.Dialog.v2" timestamp="1598949163664">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state x="354" y="201" key="Vcs.Push.Dialog.v2/65.23.1375.877@65.23.1375.877" timestamp="1598949163664" />
+  </component>
+</project>
