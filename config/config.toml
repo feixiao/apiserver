@@ -16,8 +16,9 @@
 #     configKey="jupiter.etcdv3.default"
 #     timeout = "1s"
 [jupiter.cron.demo]
-    immediatelyRun = true
+    immediatelyRun = false
     concurrentDelay = 5
+    withSeconds = true
 [jupiter.mysql.test]
     connMaxLifetime = "300s"
     debug = true

@@ -6,9 +6,6 @@ import (
 
 	"apiserver/internal/app/handler/middleware"
 	"apiserver/internal/app/handler/user"
-	"net/http"
-	"time"
-
 	"github.com/douyu/jupiter"
 	"github.com/douyu/jupiter/pkg/server/xgin"
 	"github.com/douyu/jupiter/pkg/server/xgrpc"
@@ -19,6 +16,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"google.golang.org/grpc/examples/helloworld/helloworld"
+	"net/http"
 )
 
 type Engine struct {
@@ -103,7 +101,14 @@ func (eng *Engine) serveGRPC() error {
 
 func (eng *Engine) startJobs() error {
 	cron := xcron.StdConfig("demo").Build()
-	cron.Schedule(xcron.Every(time.Second*10), xcron.FuncJob(eng.execJob))
+	//cron.Schedule(xcron.Every(time.Second*10), xcron.FuncJob(eng.execJob))
+	// https://blog.csdn.net/qq_37493556/article/details/105083396
+	// spec := "*/5 * * * * ?" //cron表达式，每五秒一次
+	//spec := "0 0 1 * * ?"  // 每天凌晨1点执行一次：0 0 1 * * ?
+	spec := "0 31 16 * * ?"
+	if _, err := cron.AddFunc(spec, eng.execJob); err != nil {
+		xlog.Errorf("corn failed, err:%+v", err)
+	}
 	return eng.Schedule(cron)
 }
 
