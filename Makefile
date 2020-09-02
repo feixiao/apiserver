@@ -54,7 +54,9 @@ buildDemo:
 
 doc:
 	@swag init -d internal/app/handler -g user/swag.go
-run:
+
+run:doc
 	go run cmd/main.go --config=config/config.toml
 
-
+watch:doc
+    go run cmd/main.go --config="http://172.20.99.13:50010/api/v1/agent/config?name=apiserver&env=dev&target=config-dev.toml" --watch

@@ -1,12 +1,13 @@
 package engine
 
 import (
+	_ "apiserver/docs"
 	"apiserver/internal/app/grpc/greeter"
-	"apiserver/internal/app/handler/sd"
-
 	"apiserver/internal/app/handler/middleware"
+	"apiserver/internal/app/handler/sd"
 	"apiserver/internal/app/handler/user"
 	"github.com/douyu/jupiter"
+	"github.com/douyu/jupiter/pkg/conf"
 	"github.com/douyu/jupiter/pkg/server/xgin"
 	"github.com/douyu/jupiter/pkg/server/xgrpc"
 	"github.com/douyu/jupiter/pkg/util/xgo"
@@ -17,6 +18,7 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"google.golang.org/grpc/examples/helloworld/helloworld"
 	"net/http"
+	"time"
 )
 
 type Engine struct {
@@ -27,6 +29,7 @@ func NewEngine() *Engine {
 	eng := &Engine{}
 	if err := eng.Startup(
 		xgo.ParallelWithError(
+			eng.remoteConfigWatch,
 			eng.serveGRPC,
 			eng.serveHTTP,
 			eng.startJobs,
@@ -35,6 +38,28 @@ func NewEngine() *Engine {
 		xlog.Panic("startup engine", xlog.Any("err", err))
 	}
 	return eng
+}
+
+type People struct {
+	Name string
+}
+
+func (eng *Engine) remoteConfigWatch() error {
+	p := People{}
+	conf.OnChange(func(config *conf.Configuration) {
+		err := config.UnmarshalKey("people", &p)
+		if err != nil {
+			panic(err.Error())
+		}
+	})
+	go func() {
+		// 循环打印配置
+		for {
+			time.Sleep(10 * time.Second)
+			xlog.Info("people info", xlog.String("name", p.Name), xlog.String("type", "structByFileWatch"))
+		}
+	}()
+	return nil
 }
 
 func (eng *Engine) serveHTTP() error {

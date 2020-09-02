@@ -3,6 +3,7 @@ module apiserver
 go 1.14
 
 require (
+	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/douyu/jupiter v0.2.4
@@ -17,6 +18,7 @@ require (
 	github.com/shirou/gopsutil v2.20.7+incompatible
 	github.com/spf13/viper v1.7.1
 	github.com/swaggo/gin-swagger v1.2.0
+	github.com/swaggo/swag v1.6.7
 	github.com/teris-io/shortid v0.0.0-20171029131806-771a37caa5cf
 	github.com/urfave/cli/v2 v2.2.0 // indirect
 	github.com/willf/pad v0.0.0-20200313202418-172aa767f2a4
