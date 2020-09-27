@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4a88819-81d3-411d-b4e9-a2fc2607ba68" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wrktest.sh" beforeDir="false" afterPath="$PROJECT_DIR$/wrktest.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +32,7 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="RunManager" selected="Go Build.apiserver_with_juno_agent">
     <configuration name="apiserver_with_config" type="GoApplicationRunConfiguration" factoryName="Go Application">
@@ -48,7 +51,7 @@
       <module name="apiserver" />
       <working_directory value="$PROJECT_DIR$" />
       <go_parameters value="-i" />
-      <parameters value="--config=&quot;http://172.20.99.13:60813/api/v1/agent/config?name=apiserver&amp;env=dev&amp;target=config-dev.toml&amp;port=8023&quot; --watch" />
+      <parameters value="--config=&quot;http://172.20.99.13:50010/api/v1/agent/config?name=apiserver&amp;env=dev&amp;target=config-dev.toml&quot; --watch" />
       <kind value="DIRECTORY" />
       <filePath value="$PROJECT_DIR$/cmd" />
       <package value="apiserver" />
@@ -69,41 +72,108 @@
     <MESSAGE value="添加默认的项目结构" />
     <MESSAGE value="修改依赖" />
     <MESSAGE value="测试cron" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试cron" />
+    <MESSAGE value="添加goland项目管理文件" />
+    <MESSAGE value="添加在线接口文档" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加在线接口文档" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="218" y="123" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598951324528">
+    <state x="218" y="123" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598955618999">
       <screen x="68" y="23" width="1372" height="877" />
     </state>
-    <state x="218" y="123" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog/68.23.1372.877@68.23.1372.877" timestamp="1598951324528" />
-    <state x="349" y="47" key="CommitChangelistDialog2" timestamp="1598949130002">
-      <screen x="65" y="23" width="1375" height="877" />
+    <state x="218" y="123" width="1071" height="724" key="#com.intellij.execution.impl.EditConfigurationsDialog/68.23.1372.877@68.23.1372.877" timestamp="1598955618999" />
+    <state x="433" y="270" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598951334182">
+      <screen x="68" y="23" width="1372" height="877" />
+    </state>
+    <state x="433" y="270" key="#com.intellij.fileTypes.FileTypeChooser/68.23.1372.877@68.23.1372.877" timestamp="1598951334182" />
+    <state x="351" y="47" key="CommitChangelistDialog2" timestamp="1599006041873">
+      <screen x="68" y="23" width="1372" height="877" />
     </state>
     <state x="297" y="25" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1598944608155" />
     <state x="349" y="47" key="CommitChangelistDialog2/65.23.1375.877@65.23.1375.877" timestamp="1598949130002" />
-    <state x="351" y="47" key="CommitChangelistDialog2/68.23.1372.877@68.23.1372.877" timestamp="1598948505137" />
-    <state width="1330" height="231" key="GridCell.Tab.0.bottom" timestamp="1598951240449">
-      <screen x="68" y="23" width="1372" height="877" />
-    </state>
-    <state width="1330" height="231" key="GridCell.Tab.0.bottom/68.23.1372.877@68.23.1372.877" timestamp="1598951240449" />
-    <state width="1330" height="231" key="GridCell.Tab.0.center" timestamp="1598951240448">
-      <screen x="68" y="23" width="1372" height="877" />
-    </state>
-    <state width="1330" height="231" key="GridCell.Tab.0.center/68.23.1372.877@68.23.1372.877" timestamp="1598951240448" />
-    <state width="1330" height="231" key="GridCell.Tab.0.left" timestamp="1598951240447">
-      <screen x="68" y="23" width="1372" height="877" />
-    </state>
-    <state width="1330" height="231" key="GridCell.Tab.0.left/68.23.1372.877@68.23.1372.877" timestamp="1598951240447" />
-    <state width="1330" height="231" key="GridCell.Tab.0.right" timestamp="1598951240448">
-      <screen x="68" y="23" width="1372" height="877" />
-    </state>
-    <state width="1330" height="231" key="GridCell.Tab.0.right/68.23.1372.877@68.23.1372.877" timestamp="1598951240448" />
-    <state x="354" y="201" key="Vcs.Push.Dialog.v2" timestamp="1598949163664">
+    <state x="351" y="47" key="CommitChangelistDialog2/68.23.1372.877@68.23.1372.877" timestamp="1599006041873" />
+    <state width="668" height="466" key="DebuggerActiveHint" timestamp="1600420535414">
       <screen x="65" y="23" width="1375" height="877" />
     </state>
+    <state width="668" height="466" key="DebuggerActiveHint/65.23.1375.877@65.23.1375.877" timestamp="1600420535414" />
+    <state x="653" y="330" key="EnvironmentVariablesDialog" timestamp="1601185038713">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state x="653" y="330" key="EnvironmentVariablesDialog/65.23.1375.877@65.23.1375.877" timestamp="1601185038713" />
+    <state width="1330" height="198" key="GridCell.Tab.0.bottom" timestamp="1601187367663">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.0.bottom/62.23.1378.877@62.23.1378.877" timestamp="1600420696946" />
+    <state width="1330" height="198" key="GridCell.Tab.0.bottom/65.23.1375.877@65.23.1375.877" timestamp="1601187367663" />
+    <state width="1330" height="286" key="GridCell.Tab.0.bottom/68.23.1372.877@68.23.1372.877" timestamp="1598955764099" />
+    <state width="1330" height="198" key="GridCell.Tab.0.center" timestamp="1601187367663">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.0.center/62.23.1378.877@62.23.1378.877" timestamp="1600420696946" />
+    <state width="1330" height="198" key="GridCell.Tab.0.center/65.23.1375.877@65.23.1375.877" timestamp="1601187367663" />
+    <state width="1330" height="286" key="GridCell.Tab.0.center/68.23.1372.877@68.23.1372.877" timestamp="1598955764098" />
+    <state width="1330" height="198" key="GridCell.Tab.0.left" timestamp="1601187367663">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.0.left/62.23.1378.877@62.23.1378.877" timestamp="1600420696946" />
+    <state width="1330" height="198" key="GridCell.Tab.0.left/65.23.1375.877@65.23.1375.877" timestamp="1601187367663" />
+    <state width="1330" height="286" key="GridCell.Tab.0.left/68.23.1372.877@68.23.1372.877" timestamp="1598955764098" />
+    <state width="1330" height="198" key="GridCell.Tab.0.right" timestamp="1601187367663">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.0.right/62.23.1378.877@62.23.1378.877" timestamp="1600420696946" />
+    <state width="1330" height="198" key="GridCell.Tab.0.right/65.23.1375.877@65.23.1375.877" timestamp="1601187367663" />
+    <state width="1330" height="286" key="GridCell.Tab.0.right/68.23.1372.877@68.23.1372.877" timestamp="1598955764099" />
+    <state width="1330" height="286" key="GridCell.Tab.1.bottom" timestamp="1600420696947">
+      <screen x="62" y="23" width="1378" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.1.bottom/62.23.1378.877@62.23.1378.877" timestamp="1600420696947" />
+    <state width="1330" height="286" key="GridCell.Tab.1.bottom/65.23.1375.877@65.23.1375.877" timestamp="1600420489201" />
+    <state width="1330" height="286" key="GridCell.Tab.1.bottom/68.23.1372.877@68.23.1372.877" timestamp="1598955764100" />
+    <state width="1330" height="286" key="GridCell.Tab.1.center" timestamp="1600420696947">
+      <screen x="62" y="23" width="1378" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.1.center/62.23.1378.877@62.23.1378.877" timestamp="1600420696947" />
+    <state width="1330" height="286" key="GridCell.Tab.1.center/65.23.1375.877@65.23.1375.877" timestamp="1600420489200" />
+    <state width="1330" height="286" key="GridCell.Tab.1.center/68.23.1372.877@68.23.1372.877" timestamp="1598955764100" />
+    <state width="1330" height="286" key="GridCell.Tab.1.left" timestamp="1600420696946">
+      <screen x="62" y="23" width="1378" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.1.left/62.23.1378.877@62.23.1378.877" timestamp="1600420696946" />
+    <state width="1330" height="286" key="GridCell.Tab.1.left/65.23.1375.877@65.23.1375.877" timestamp="1600420489199" />
+    <state width="1330" height="286" key="GridCell.Tab.1.left/68.23.1372.877@68.23.1372.877" timestamp="1598955764100" />
+    <state width="1330" height="286" key="GridCell.Tab.1.right" timestamp="1600420696947">
+      <screen x="62" y="23" width="1378" height="877" />
+    </state>
+    <state width="1330" height="286" key="GridCell.Tab.1.right/62.23.1378.877@62.23.1378.877" timestamp="1600420696947" />
+    <state width="1330" height="286" key="GridCell.Tab.1.right/65.23.1375.877@65.23.1375.877" timestamp="1600420489200" />
+    <state width="1330" height="286" key="GridCell.Tab.1.right/68.23.1372.877@68.23.1372.877" timestamp="1598955764100" />
+    <state x="255" y="100" key="SettingsEditor" timestamp="1601185039800">
+      <screen x="65" y="23" width="1375" height="877" />
+    </state>
+    <state x="255" y="100" key="SettingsEditor/65.23.1375.877@65.23.1375.877" timestamp="1601185039800" />
+    <state x="356" y="201" key="Vcs.Push.Dialog.v2" timestamp="1599006132666">
+      <screen x="68" y="23" width="1372" height="877" />
+    </state>
     <state x="354" y="201" key="Vcs.Push.Dialog.v2/65.23.1375.877@65.23.1375.877" timestamp="1598949163664" />
+    <state x="356" y="201" key="Vcs.Push.Dialog.v2/68.23.1372.877@68.23.1372.877" timestamp="1599006132666" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/internal/app/engine/engine.go</url>
+          <line>127</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$USER_HOME$/gopath/pkg/mod/github.com/douyu/jupiter@v0.2.5/pkg/worker/xcron/config.go</url>
+          <line>41</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
