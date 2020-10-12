@@ -3,6 +3,7 @@ demo for jupiter
 
 ### 安装脚手架
 ```
+export GO111MODULE=on && go get -u github.com/swaggo/swag/cmd/swag
 go get -u github.com/douyu/jupiter/tools/jupiter
 ```
 
@@ -57,7 +58,8 @@ wrktest.sh
 + [Juno部署](https://feixiao.github.io/2020/08/31/juno/)
    
 ### Todo
++ [ ] 接入Juno
 + [ ] Repository接口实现
 + [ ] GRPC接口实现
 + [ ] 远程配置
-+ [ ] 服务注册
++ [x] 服务注册
