@@ -55,19 +55,7 @@ wrktest.sh
 
 ### 远程配置
 + [Juno部署](https://feixiao.github.io/2020/08/31/juno/)
-+ Juno上面配置应用服务
-    + 新建应用
-    ```shell script
-    http://172.20.99.13:50002/app?tab=detail
-    ```
-   + 编辑应用节点
-   ```shell script
-    http://172.20.99.13:50002/resource/app/list
-   ```
-   + 新建应用配置(应用服务页)
-   ```shell script
-   http://172.20.99.13:50002/app?aid=3&appName=apiserver&env=dev&tab=confgo
-   ```
+   
 ### Todo
 + [ ] Repository接口实现
 + [ ] GRPC接口实现
