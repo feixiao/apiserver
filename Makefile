@@ -6,6 +6,8 @@ TITLE:=$(shell basename $(BASE_PATH))
 BUILD_TIME:=$(shell date +%Y-%m-%d--%T)
 JUPITER:=github.com/douyu/jupiter
 
+export APP_NAME=apiserver
+
 all:print fmt lint buildDemo
 alltar:print fmt lint buildDemo
 
@@ -56,6 +58,7 @@ doc:
 	@swag init -d internal/app/handler -g user/swag.go
 
 run:doc
+	@echo ${APP_NAME}
 	go run cmd/main.go --config=config/config.toml
 
 # watch:doc
