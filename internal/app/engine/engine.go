@@ -6,6 +6,9 @@ import (
 	"apiserver/internal/app/handler/middleware"
 	"apiserver/internal/app/handler/sd"
 	"apiserver/internal/app/handler/user"
+	"net/http"
+	"time"
+
 	"github.com/douyu/jupiter"
 	"github.com/douyu/jupiter/pkg/conf"
 	"github.com/douyu/jupiter/pkg/server/xgin"
@@ -17,8 +20,6 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"google.golang.org/grpc/examples/helloworld/helloworld"
-	"net/http"
-	"time"
 )
 
 type Engine struct {
@@ -29,7 +30,7 @@ func NewEngine() *Engine {
 	eng := &Engine{}
 	if err := eng.Startup(
 		xgo.ParallelWithError(
-			eng.remoteConfigWatch,
+			//	eng.remoteConfigWatch,
 			eng.serveGRPC,
 			eng.serveHTTP,
 			eng.startJobs,

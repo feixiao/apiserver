@@ -57,8 +57,17 @@ wrktest.sh
 ### 远程配置
 + [Juno部署](https://feixiao.github.io/2020/08/31/juno/)
    
+### 关于接入Juno
++ 安装Juno
++ 启动apiserver，注意这边需要配置环境变量APP_NAME为apiserver，否则程序名字为main
++ 在页面上添加应用，应用名字很关键，这边是apiserver。
++ 关联apiserver和juno-agent
+    + 这个时候juno-agent会去etcd获取apiserver的信息，然后写入promethus的配置路径(基于文件的动态获取抓取目标)
+    + 这种配置也就说明juno-agent和prometheus要一对一配置
++ 顺利的情况下面我们可以在juno-admin上看到grafana的监控项了
+
 ### Todo
-+ [ ] 接入Juno
++ [x] 接入Juno
 + [ ] Repository接口实现
 + [ ] GRPC接口实现
 + [ ] 远程配置
