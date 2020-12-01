@@ -4,11 +4,7 @@ import (
 	h "apiserver/internal/app/handler"
 	model "apiserver/internal/app/model/db"
 	"apiserver/pkg/errno"
-	"apiserver/pkg/util"
-
 	"github.com/gin-gonic/gin"
-	"github.com/lexkong/log"
-	"github.com/lexkong/log/lager"
 )
 
 // @Summary Add new user to the database
@@ -18,11 +14,10 @@ import (
 // @Produce  json
 // @Param user body user.CreateRequest true "Create a new user"
 // @Success 200 {object} user.CreateResponse "{"code":0,"message":"OK","data":{"username":"kong"}}"
-// @Router /user [post]
+// @Router /v1/user [post]
 func Create(c *gin.Context) {
-	log.Info("User Create function called.", lager.Data{"X-Request-Id": util.GetReqID(c)})
 	var r CreateRequest
-	if err := c.Bind(&r); err != nil {
+	if err := c.ShouldBindJSON(&r); err != nil {
 		h.SendResponse(c, errno.ErrBind, nil)
 		return
 	}
@@ -32,11 +27,11 @@ func Create(c *gin.Context) {
 		Password: r.Password,
 	}
 
-	// Validate the data.
-	if err := u.Validate(); err != nil {
-		h.SendResponse(c, errno.ErrValidation, nil)
-		return
-	}
+	//// Validate the data.
+	//if err := u.Validate(); err != nil {
+	//	h.SendResponse(c, errno.ErrValidation, nil)
+	//	return
+	//}
 
 	// Encrypt the user password.
 	if err := u.Encrypt(); err != nil {

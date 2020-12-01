@@ -3,8 +3,8 @@ package user
 import "apiserver/internal/app/model/db"
 
 type CreateRequest struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Username string `json:"username" binding:"required,gte=1,lte=16"`
+	Password string `json:"password" binding:"required"`
 }
 
 type CreateResponse struct {

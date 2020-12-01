@@ -17,7 +17,7 @@ import (
 // @Produce  json
 // @Param id path uint64 true "The user's database id index num"
 // @Success 200 {object} handler.Response "{"code":0,"message":"OK","data":null}"
-// @Router /user/{id} [delete]
+// @Router /v1/user/{id} [delete]
 func Delete(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
 	if err := db.DeleteUser(uint64(userId)); err != nil {
